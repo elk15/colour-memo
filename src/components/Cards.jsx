@@ -23,7 +23,7 @@ const shuffleArray = (arr) => {
     return arr;
 }
 
-export default function Cards({level, setGameState}) {
+export default function Cards({level, setGameState, setScore, score}) {
     const [colorsArray, setColorsArray] = useState([]);
 
     const generateColorsArray = async (level) => {
@@ -48,6 +48,7 @@ export default function Cards({level, setGameState}) {
                     setGameState('game over');
                 } else {
                     color.isClicked = true;
+                    setScore(score + 1);
                 }
             }
         })
