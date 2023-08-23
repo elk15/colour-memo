@@ -1,6 +1,8 @@
 import { useState } from 'react'
-import './App.css'
-import Title from './components/Title'
+import './App.css';
+import Title from './components/Title';
+import Stats from './components/Stats'
+
 
 function App() {
 
@@ -8,6 +10,7 @@ function App() {
     <>
       <header>
         <Title/>
+        <Stats/>
       </header>
     </>
   )
