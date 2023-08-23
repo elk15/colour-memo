@@ -12,7 +12,7 @@ let overlayStyle = {
 }
 
 let modalStyle = {
-
+  transform: 'translate(0%, 0%)'
 }
 
 
@@ -47,7 +47,7 @@ function App() {
       }
 
       modalStyle = {
-
+        transform: 'translate(0%, 0%)'
       }
     }
   }, [gameState])
@@ -57,7 +57,9 @@ function App() {
   }, [score, highestScore])
 
   const resetGame = () => {
-    
+    setGameState('new game');
+    setScore(0);
+    setLevel(1);
   }
 
   return (
@@ -67,12 +69,17 @@ function App() {
         <Stats level={level} score={score} highestScore={highestScore}/>
       </header>
       <main>
-        <Cards level={level} setGameState={setGameState} setScore={setScore} score={score}/>
+        <Cards 
+        level={level} 
+        gameState={gameState}
+        setGameState={setGameState} 
+        setScore={setScore} score={score}/>
       </main>
       <GameOver 
       highestScore={highestScore} 
       overlayStyle={overlayStyle} 
-      modalStyle={modalStyle}/>
+      modalStyle={modalStyle}
+      resetGame={resetGame}/>
     </>
   )
 }
