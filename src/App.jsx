@@ -6,15 +6,16 @@ import Cards from './components/Cards';
 
 
 function App() {
+  const [level, setLevel] = useState(1);
 
   return (
     <>
       <header>
         <Title/>
-        <Stats/>
+        <Stats level={level}/>
       </header>
       <main>
-        <Cards/>
+        <Cards level={level}/>
       </main>
     </>
   )
