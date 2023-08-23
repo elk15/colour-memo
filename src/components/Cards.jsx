@@ -28,10 +28,18 @@ export default function Cards({level, gameState, setGameState, setScore, score})
 
     const generateColorsArray = async (level) => {
         let newColors = [];
+        let previousRGBs = [];
         for (let i = 0; i < level + 3; i++) {
-            let r = randomBetween(0, 254);
-            let g = randomBetween(0, 254);
-            let b = randomBetween(0, 254);
+            while(true) {
+                let r = randomBetween(0, 254);
+                let g = randomBetween(0, 254);
+                let b = randomBetween(0, 254);
+                let rgb = `${r},${g},${b}`;
+                if (!previousRGBs.includes(rgb)) {
+                    previousRGBs.push(rgb);
+                    break;
+                }
+            }
             const response = await fetch(`https://www.thecolorapi.com/id?rgb=${r},${g},${b}`);
             const data = await response.json();
             newColors = [...newColors, {hex: data.hex.value, name: data.name.value, isClicked: false}];
