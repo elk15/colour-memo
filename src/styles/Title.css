@@ -19,3 +19,7 @@
     -moz-text-fill-color: transparent;
     -webkit-text-stroke:2px #86A8E7;
 }
+
+.title {
+    padding-top: 10px;
+}
